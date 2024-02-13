@@ -22,6 +22,8 @@ public enum MusicItemType {
 public struct LhMusicKit: MusicKitable {
     private let player = SystemMusicPlayer.shared
 
+    public init() {}
+
     public func catalogTopResultsRequest(for searchTerm: String) async throws -> [MusicCatalogSearchResponse.TopResult] {
         let _ = await MusicAuthorization.request()
 
