@@ -13,12 +13,6 @@ public enum MusicKitError: Error {
     case noArtistForMusicItemId
 }
 
-public enum MusicItemType {
-    case artist
-    case album
-    case song
-}
-
 public struct LhMusicKit: MusicKitable {
     private let player = SystemMusicPlayer.shared
 
