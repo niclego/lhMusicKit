@@ -31,6 +31,18 @@ public struct LhMusicKit: MusicKitable {
         return try await req.response().topResults.map { $0 }
     }
 
+    public func catalogSongsRequests(for musicItemIds: [String]) async throws -> [Song] {
+        return try await withThrowingTaskGroup(of: Song.self, returning: [Song].self) { taskGroup in
+            for musicItemId in musicItemIds {
+                taskGroup.addTask { try await catalogSongRequest(for: musicItemId) }
+            }
+
+            return try await taskGroup.reduce(into: [Song]()) { partialResult, name in
+                partialResult.append(name)
+            }
+        }
+    }
+
     public func catalogSongRequest(for musicItemId: String) async throws -> Song {
         let req = MusicCatalogResourceRequest<Song>(matching: \.id, equalTo: MusicItemID(stringLiteral: musicItemId))
         guard let song = try await req.response().items.first else { throw MusicKitError.noSongForMusicItemId }
