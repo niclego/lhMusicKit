@@ -6,6 +6,7 @@
 //
 
 import MusicKit
+import Combine
 
 public enum MusicKitError: Error {
     case noSongForMusicItemId
@@ -14,7 +15,7 @@ public enum MusicKitError: Error {
 }
 
 public struct LhMusicKit: MusicKitable {
-    private let player = SystemMusicPlayer.shared
+    public let player = SystemMusicPlayer.shared
 
     public init() {}
 
@@ -61,14 +62,12 @@ public struct LhMusicKit: MusicKitable {
         return artist
     }
 
-    public func playSong(musicItemId: String) async throws {
-        let song = try await catalogSongRequest(for: musicItemId)
+    public func play(_ song: Song) async throws {
         player.queue = [song]
         try await player.play()
     }
 
-    public func playAlbum(musicItemId: String) async throws {
-        let album = try await catalogAlbumRequest(for: musicItemId)
+    public func play(_ album: Album) async throws {
         player.queue = [album]
         try await player.play()
     }
