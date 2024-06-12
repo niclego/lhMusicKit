@@ -15,8 +15,6 @@ public enum MusicKitError: Error {
 }
 
 public struct LhMusicKit: MusicKitable {
-    public let player = SystemMusicPlayer.shared
-
     public init() {}
 
     public func catalogTopResultsRequest(for searchTerm: String) async throws -> [MusicCatalogSearchResponse.TopResult] {
@@ -63,16 +61,18 @@ public struct LhMusicKit: MusicKitable {
     }
 
     public func play(_ song: Song) async throws {
-        player.queue = [song]
-        try await player.play()
+        SystemMusicPlayer.shared.queue = [song]
+        try await SystemMusicPlayer.shared.play()
     }
 
     public func play(_ album: Album) async throws {
-        player.queue = [album]
-        try await player.play()
+        SystemMusicPlayer.shared.queue = [album]
+        try await SystemMusicPlayer.shared.play()
     }
 
     public func pause() {
-        player.pause()
+        SystemMusicPlayer.shared.pause()
     }
 }
+
+extension LhMusicKit: Sendable {}
