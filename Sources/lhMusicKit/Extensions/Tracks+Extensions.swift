@@ -1,6 +1,6 @@
 //
-//  Song+Extensions.swift
-//  
+//  Track+Extensions.swift
+//
 //
 //  Created by Nicolas Le Gorrec on 7/4/24.
 //
@@ -8,19 +8,19 @@
 import MusicKit
 import SwiftUI
 
-extension Song: Songable {
+extension Track: Songable {
     public var isReleased: Bool {
         guard let data = releaseDate else { return false }
         return data < Date.now
     }
-    
+
     public var artistables: [any Artistable]? {
         if let artists = artists {
             return Array(artists)
         }
         return nil
     }
-    
+
     public var albumables: [Albumable]? {
         if let albums = albums {
             return Array(albums)
@@ -58,10 +58,11 @@ extension Song: Songable {
     }
 
     public func songWithAlbums() async throws -> Songable {
-        return try await self.with([.albums])
+        return self
     }
 
     public func songWithArtists() async throws -> Songable {
-        return try await self.with([.artists])
+        return self
     }
 }
+
