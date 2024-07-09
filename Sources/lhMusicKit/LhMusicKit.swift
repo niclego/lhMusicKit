@@ -60,15 +60,13 @@ public struct LhMusicKit: MusicKitable {
         return artist
     }
 
-//    public func play(_ song: Song) async throws {
-//        SystemMusicPlayer.shared.queue = [song]
-//        try await SystemMusicPlayer.shared.play()
-//    }
-//
-//    public func play(_ album: Album) async throws {
-//        SystemMusicPlayer.shared.queue = [album]
-//        try await SystemMusicPlayer.shared.play()
-//    }
+    public func play(_ song: Songable) async throws {
+        try await song.play()
+    }
+
+    public func play(_ album: Albumable) async throws {
+        try await album.play()
+    }
 
     public func pause() {
         SystemMusicPlayer.shared.pause()

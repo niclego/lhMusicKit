@@ -13,8 +13,8 @@ public protocol MusicKitable: Sendable {
     func catalogSongRequest(for musicItemId: String) async throws -> Songable
     func catalogAlbumRequest(for musicItemId: String) async throws -> Albumable
     func catalogArtistRequest(for musicItemId: String) async throws -> Artistable
-//    func play(_ song: Song) async throws
-//    func play(_ album: Album) async throws
+    func play(_ song: Songable) async throws
+    func play(_ album: Albumable) async throws
     func requestMusicAccess() async
     func pause()
 }

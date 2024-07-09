@@ -64,5 +64,10 @@ extension Track: Songable {
     public func songWithArtists() async throws -> Songable {
         return self
     }
+
+    public func play() async throws {
+        SystemMusicPlayer.shared.queue = [self]
+        try await SystemMusicPlayer.shared.play()
+    }
 }
 

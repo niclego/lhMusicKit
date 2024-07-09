@@ -39,13 +39,25 @@ extension Album: Albumable {
     }
 
     public var songables: [any Songable]? {
-        if let songs = tracks {
-            return Array(songs)
-        }
-        return nil
+        guard let songs = tracks else { return nil }
+        return Array(songs)
+    }
+
+    public var artistables: [any Artistable]? {
+        guard let artists = artists else { return nil }
+        return Array(artists)
     }
 
     public func albumWithSongs() async throws -> Albumable {
         return try await self.with([.tracks])
+    }
+
+    public func albumWithArtists() async throws -> any Albumable {
+        return try await self.with([.artists])
+    }
+
+    public func play() async throws {
+        SystemMusicPlayer.shared.queue = [self]
+        try await SystemMusicPlayer.shared.play()
     }
 }

@@ -25,4 +25,5 @@ public protocol Songable {
 
     func songWithAlbums() async throws -> Songable
     func songWithArtists() async throws -> Songable
+    func play() async throws
 }

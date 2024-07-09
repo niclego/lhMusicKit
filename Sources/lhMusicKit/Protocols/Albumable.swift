@@ -19,6 +19,9 @@ public protocol Albumable {
     var releaseDate: Date? { get }
     var copyright: String? { get }
     var songables: [Songable]? { get }
+    var artistables: [Artistable]? { get }
 
     func albumWithSongs() async throws -> Albumable
+    func albumWithArtists() async throws -> Albumable
+    func play() async throws
 }
