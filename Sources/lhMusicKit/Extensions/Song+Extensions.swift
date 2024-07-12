@@ -57,6 +57,10 @@ extension Song: Songable {
         }
     }
 
+    public var topResultable: TopResultable? {
+        return self
+    }
+
     public func songWithAlbums() async throws -> Songable {
         return try await self.with([.albums])
     }
@@ -68,5 +72,23 @@ extension Song: Songable {
     public func play() async throws {
         SystemMusicPlayer.shared.queue = [self]
         try await SystemMusicPlayer.shared.play()
+    }
+}
+
+extension Song: TopResultable {
+    public var songable: (any Songable)? {
+        self
+    }
+    
+    public var albumable: (any Albumable)? {
+        nil
+    }
+    
+    public var artistable: (any Artistable)? {
+        nil
+    }
+    
+    public var type: String {
+        "song"
     }
 }

@@ -8,7 +8,7 @@
 import MusicKit
 
 public protocol MusicKitable: Sendable {
-    func catalogTopResultsRequest(for searchTerm: String) async throws -> [MusicCatalogSearchResponse.TopResult]
+    func catalogTopResultsRequest(for searchTerm: String) async throws -> [TopResultable]
     func catalogSongsRequests(for musicItemIds: [String]) async throws -> [Songable]
     func catalogSongRequest(for musicItemId: String) async throws -> Songable
     func catalogAlbumRequest(for musicItemId: String) async throws -> Albumable

@@ -17,7 +17,7 @@ public enum MusicKitError: Error {
 public struct LhMusicKit: MusicKitable {
     public init() {}
 
-    public func catalogTopResultsRequest(for searchTerm: String) async throws -> [MusicCatalogSearchResponse.TopResult] {
+    public func catalogTopResultsRequest(for searchTerm: String) async throws -> [TopResultable] {
         let _ = await MusicAuthorization.request()
 
         var req = MusicCatalogSearchRequest(

@@ -8,7 +8,7 @@
 import MusicKit
 import SwiftUI
 
-public protocol Albumable {
+public protocol Albumable: Sendable {
     var musicId: String { get }
     var primaryColor: Color { get }
     var secondaryColor: Color { get }
@@ -16,7 +16,7 @@ public protocol Albumable {
     var artwork: Artwork? { get }
     var title: String { get }
     var artistName: String { get }
-    var releaseDate: Date? { get }
+    var releaseDateTime: Date? { get }
     var copyright: String? { get }
     var songables: [Songable]? { get }
     var artistables: [Artistable]? { get }

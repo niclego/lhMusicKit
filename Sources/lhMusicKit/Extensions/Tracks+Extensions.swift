@@ -57,6 +57,8 @@ extension Track: Songable {
         }
     }
 
+    public var topResultable: TopResultable? { nil }
+
     public func songWithAlbums() async throws -> Songable {
         return self
     }

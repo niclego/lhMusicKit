@@ -8,7 +8,7 @@
 import MusicKit
 import SwiftUI
 
-public protocol Songable {
+public protocol Songable: Sendable {
     var musicId: String { get }
     var primaryColor: Color { get }
     var secondaryColor: Color { get }
@@ -22,6 +22,7 @@ public protocol Songable {
     var artistables: [Artistable]? { get }
     var duration: TimeInterval? { get }
     var isReleased: Bool { get }
+    var topResultable: TopResultable? { get }
 
     func songWithAlbums() async throws -> Songable
     func songWithArtists() async throws -> Songable

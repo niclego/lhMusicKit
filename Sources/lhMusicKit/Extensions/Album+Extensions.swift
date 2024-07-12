@@ -48,6 +48,10 @@ extension Album: Albumable {
         return Array(artists)
     }
 
+    public var releaseDateTime: Date? {
+        return self.releaseDate
+    }
+
     public func albumWithSongs() async throws -> Albumable {
         return try await self.with([.tracks])
     }

@@ -8,7 +8,7 @@
 import MusicKit
 import SwiftUI
 
-public protocol Artistable {
+public protocol Artistable: Sendable {
     var musicId: String { get }
     var primaryColor: Color { get }
     var secondaryColor: Color { get }
