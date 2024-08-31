@@ -38,5 +38,7 @@ public struct LhMusicKitMock: MusicKitable {
     
     public func requestMusicAccess() async {}
 
+    public var isAccessEnabled = true
+
     public func pause() {}
 }

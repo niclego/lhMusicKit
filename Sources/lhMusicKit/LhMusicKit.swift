@@ -75,6 +75,10 @@ public struct LhMusicKit: MusicKitable {
     public func requestMusicAccess() async {
         let _ = await MusicAuthorization.request()
     }
+
+    public var isAccessEnabled: Bool {
+        MusicAuthorization.currentStatus == .authorized
+    }
 }
 
 extension LhMusicKit: Sendable {}
