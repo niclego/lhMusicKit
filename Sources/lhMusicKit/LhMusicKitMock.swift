@@ -36,7 +36,7 @@ public struct LhMusicKitMock: MusicKitable {
         return try await album.play()
     }
     
-    public func requestMusicAccess() async {}
+    public func requestMusicAccess() async -> String { return "" }
 
     public var isAccessEnabled = true
 

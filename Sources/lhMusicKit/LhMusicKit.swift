@@ -72,8 +72,8 @@ public struct LhMusicKit: MusicKitable {
         SystemMusicPlayer.shared.pause()
     }
 
-    public func requestMusicAccess() async {
-        let _ = await MusicAuthorization.request()
+    public func requestMusicAccess() async -> String {
+        return await MusicAuthorization.request().rawValue
     }
 
     public var isAccessEnabled: Bool {

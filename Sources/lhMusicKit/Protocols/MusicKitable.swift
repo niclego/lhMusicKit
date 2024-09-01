@@ -15,7 +15,7 @@ public protocol MusicKitable: Sendable {
     func catalogArtistRequest(for musicItemId: String) async throws -> Artistable
     func play(_ song: Songable) async throws
     func play(_ album: Albumable) async throws
-    func requestMusicAccess() async
+    func requestMusicAccess() async -> String
     var isAccessEnabled: Bool { get }
     func pause()
 }
