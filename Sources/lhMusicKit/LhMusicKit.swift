@@ -22,7 +22,7 @@ public struct LhMusicKit: MusicKitable {
 
         var req = MusicCatalogSearchRequest(
             term: searchTerm,
-            types: []
+            types: [Album.self, Song.self, Artist.self]
         )
         req.includeTopResults = true
         req.limit = 10
